@@ -1,6 +1,6 @@
 class LoginForm{
     constructor(){
-        this.div = document.getElementById("formComesHere")
+        this.div = document.getElementById("formsComesHere")
     }
     render(){
         let template = `
@@ -18,7 +18,7 @@ class LoginForm{
 
 class RegisterForm{
     constructor(){
-        this.div = document.getElementById("formComesHere")
+        this.div = document.getElementById("formsComesHere")
     }
     render(){
         let template = `
@@ -37,7 +37,7 @@ class RegisterForm{
 
 class AdminForm{
     constructor(){
-        this.div = document.getElementById("formComesHere")
+        this.div = document.getElementById("formsComesHere")
     }
     render(){
         let template = `
