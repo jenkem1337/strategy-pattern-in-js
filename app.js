@@ -53,32 +53,34 @@ class AdminForm{
 }
 
 class FormContext{
-    constructor(form){
-        this.form = form
+
+    setStrategy(Strategy){
+        this.strategy = Strategy
     }
 
     renderForm(){
-        this.form.render()
+        this.strategy.render()
     }
 
 }
 
+let formStrategy = new FormContext()
 
 const loginBTN = document.getElementById("loginForm")
 const registerBTN = document.getElementById("registerForm")
 const adminBTN = document.getElementById("adminForm")
 
 loginBTN.addEventListener("click", ()=>{
-    let loginForm = new FormContext(new LoginForm())
-    loginForm.renderForm()
+    formStrategy.setStrategy(new LoginForm())
+    formStrategy.renderForm()
 })
 
 registerBTN.addEventListener("click", () =>{
-    let registerForm = new FormContext(new RegisterForm())
-    registerForm.renderForm()
+    formStrategy.setStrategy(new RegisterForm())
+    formStrategy.renderForm()
 })
 
 adminBTN.addEventListener("click", ()=>{
-    let adminForm = new FormContext(new AdminForm())
-    adminForm.renderForm()
+    formStrategy.setStrategy(new AdminForm())
+    formStrategy.renderForm()
 })
