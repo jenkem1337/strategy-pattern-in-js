@@ -64,23 +64,37 @@ class FormContext{
 
 }
 
-let formStrategy = new FormContext()
 
-const loginBTN = document.getElementById("loginForm")
-const registerBTN = document.getElementById("registerForm")
-const adminBTN = document.getElementById("adminForm")
+class View{
+    constructor(context){
+        this.formStrategy = context
+        
+        this.loginButton = document.getElementById("loginForm")
+        this.registerButton = document.getElementById("registerForm")
+        this.adminButton = document.getElementById("adminForm")
+    }
 
-loginBTN.addEventListener("click", ()=>{
-    formStrategy.setStrategy(new LoginForm())
-    formStrategy.renderForm()
-})
+    loginView(){
+        this.formStrategy.setStrategy(new LoginForm())
+        this.formStrategy.renderForm()
+    }
 
-registerBTN.addEventListener("click", () =>{
-    formStrategy.setStrategy(new RegisterForm())
-    formStrategy.renderForm()
-})
+    registerView(){
+        this.formStrategy.setStrategy(new RegisterForm())
+        this.formStrategy.renderForm()
+    }
 
-adminBTN.addEventListener("click", ()=>{
-    formStrategy.setStrategy(new AdminForm())
-    formStrategy.renderForm()
-})
+    adminView(){
+        this.formStrategy.setStrategy(new AdminForm())
+        this.formStrategy.renderForm()
+    }
+    
+    initialize(){
+        this.loginButton.addEventListener   ('click', () => this.loginView())
+        this.registerButton.addEventListener('click', () => this.registerView())
+        this.adminButton.addEventListener   ('click', () => this.adminView())
+    }
+}
+
+const $ = new View(new FormContext())
+$.initialize()
